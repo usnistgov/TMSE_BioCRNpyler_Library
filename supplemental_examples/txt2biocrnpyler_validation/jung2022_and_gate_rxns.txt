@@ -1,0 +1,31 @@
+### tetO-regulated Template
+TetR + D_tetO <---(k_rep,T, k_derep,T)---> TetRD
+TetR + tet <---(k_ind,T, k_unin,T)---> TetR-tet
+RNAP + D_tetO <---(k_bind, k_unbind)---> RD_tetO
+RD_tetO --(k_m,tetO)--> InvR_T + RNAP + D_tetO
+
+### smtO-Regulated Template
+SmtB + D_smtO <---(k_rep,S, k_derep,S)---> SmtBD
+SmtB + Zn <---(k_ind,S, k_unin,S)---> SmtB-Zn
+RNAP + D_smtO <---(k_bind, k_unbind)---> RD_smtO
+RD_smtO --(k_m,smtO)--> InvR_S + RNAP + D_smtO
+
+### Strand Displacements
+InvR_T + InvR_S + AND-Gate --(k_SD,AND)--> InvR_D + Gated_TS
+InvR_D + RQ --(k_SD)--> SD + Q
+
+### Parameters
+k_m,tetO = 0.1 /sec
+k_m,smtO = 0.04 /sec
+k_bind = 56 /uM-sec
+k_unbind = 0.2 /sec
+k_SD = 0.04 /uM-sec
+k_SD-AND = 0.08 /uM-sec
+k_rep,T = 2.98 /uM-sec
+k_derep,T = 0.001 /uM-sec
+k_ind,T = 4.0 /uM-sec
+k_unin,T = 0.022 /sec
+k_rep,S = 3.0 /uM-sec
+k_derep,S = 0.18 /uM-sec
+k_ind,S = 80 /uM-sec
+k_unin,S = 0.1 /sec

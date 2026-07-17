@@ -1,0 +1,58 @@
+ROSALIND-TMSD NOT Gate for Tetracycline
+
+For the first system, we will model a NOT gate for tetracycline using a dual-template
+system. Equations are derived using kinetic rates of T7 RNAP-DNA binding, TetR-
+tetO binding, TetR-tetracycline binding, TMSD reactions, and T7 RNAP-mediated IVT
+reactions. The following variables will be used:
+
+D_unreg    Unregulated DNA template
+D_tetO     Regulated DNA template with tetO operator sequence
+RNAP       T7 RNA Polymerase
+RD_unreg   T7 RNAP and unregulated DNA template bound complex
+RD_tetO    T7 RNAP and tetO-regulated DNA template bound complex
+TetR       unbound, free TetR dimer
+TetRD      TetR dimer bound to one tetO
+tet        unbound, free tetracycline
+TetR-tet   one tet ion bound to TetR dimer
+InvR_U     transcribed invading RNA strand from unregulated template
+InvR_T     transcribed invading RNA strand from tetO template
+Gated_T    InvR_T and InvR_U bound complex
+SD         fluorescent DNA strand from signal gate
+Q          InvadeR and FAM heteroduplex
+RQ         signal gate
+
+Reactions:
+
+Unregulated Template:
+  RNAP + D_unreg <--(k_bind / k_unbind)--> RD_unreg
+  RD_unreg --(k_m,unreg)--> InvR_U + RNAP + D_unreg
+
+tetO-Regulated Template:
+  TetR + D_tetO <--(k_rep,T / k_derep,T)--> TetRD
+  TetR + tet <--(k_ind,T / k_unin,T)--> TetR-tet
+  RNAP + D_tetO <--(k_bind / k_unbind)--> RD_tetO
+  RD_tetO --(k_m,tetO)--> InvR_T + RNAP + D_tetO
+
+Strand Displacements:
+  InvR_T + InvR_U --(k_SD,NOT)--> Gated_T
+  InvR_U + RQ --(k_SD,mis)--> SD + Q
+
+Parameters:
+  k_m,tetO    = 0.1 /sec
+  k_m,unreg   = 0.03 /sec
+  k_bind      = 56 /uM-sec
+  k_unbind    = 0.2 /sec
+  k_SD,mis    = 0.004 /uM-sec
+  k_SD,NOT    = 0.08 /uM-sec
+  k_rep,T     = 2.98 /uM-sec
+  k_derep,T   = 0.001 /uM-sec
+  k_ind,T     = 4.0 /uM-sec
+  k_unin,T    = 0.022 /sec
+
+Initial Conditions:
+  [D_tetO]  = 0.1 uM
+  [D_unreg] = 0.025 uM
+  [RNAP]    = 0.1 uM
+  [TetR]    = 5.0 uM
+  [tet]     = 20 uM
+  [RQ]      = 5.0 uM

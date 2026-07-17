@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="model">
+    <listOfUnitDefinitions>
+      <unitDefinition id="per_second">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="per_molar_per_second">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="mole" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="default" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="TetR" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="D_tetO" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="TetRD" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="tet" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="TetR_tet" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNAP" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RD_tetO" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="InvR_T" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SmtB" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="D_smtO" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SmtBD" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Zn" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SmtB_Zn" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RD_smtO" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="InvR_S" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AND_Gate" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="InvR_D" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Gated_TS" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RQ" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SD" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Q" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k_m_tetO" value="0.1" units="per_second" constant="true"/>
+      <parameter id="k_m_smtO" value="0.04" units="per_second" constant="true"/>
+      <parameter id="k_bind" value="56" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_unbind" value="0.2" units="per_second" constant="true"/>
+      <parameter id="k_SD" value="0.04" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_SD_AND" value="0.08" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_rep_T" value="2.98" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_derep_T" value="0.001" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_ind_T" value="4" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_unin_T" value="0.022" units="per_second" constant="true"/>
+      <parameter id="k_rep_S" value="3" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_derep_S" value="0.18" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_ind_S" value="80" units="per_molar_per_second" constant="true"/>
+      <parameter id="k_unin_S" value="0.1" units="per_second" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="r1" reversible="true">
+        <listOfReactants>
+          <speciesReference species="TetR" stoichiometry="1" constant="true"/>
+          <speciesReference species="D_tetO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="TetRD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k_rep_T </ci>
+                <ci> TetR </ci>
+                <ci> D_tetO </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_derep_T </ci>
+                <ci> TetRD </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r2" reversible="true">
+        <listOfReactants>
+          <speciesReference species="TetR" stoichiometry="1" constant="true"/>
+          <speciesReference species="tet" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="TetR_tet" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k_ind_T </ci>
+                <ci> TetR </ci>
+                <ci> tet </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_unin_T </ci>
+                <ci> TetR_tet </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r3" reversible="true">
+        <listOfReactants>
+          <speciesReference species="RNAP" stoichiometry="1" constant="true"/>
+          <speciesReference species="D_tetO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RD_tetO" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k_bind </ci>
+                <ci> RNAP </ci>
+                <ci> D_tetO </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_unbind </ci>
+                <ci> RD_tetO </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r4" reversible="false">
+        <listOfReactants>
+          <speciesReference species="RD_tetO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="InvR_T" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNAP" stoichiometry="1" constant="true"/>
+          <speciesReference species="D_tetO" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_m_tetO </ci>
+              <ci> RD_tetO </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r5" reversible="true">
+        <listOfReactants>
+          <speciesReference species="SmtB" stoichiometry="1" constant="true"/>
+          <speciesReference species="D_smtO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SmtBD" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k_rep_S </ci>
+                <ci> SmtB </ci>
+                <ci> D_smtO </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_derep_S </ci>
+                <ci> SmtBD </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r6" reversible="true">
+        <listOfReactants>
+          <speciesReference species="SmtB" stoichiometry="1" constant="true"/>
+          <speciesReference species="Zn" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SmtB_Zn" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k_ind_S </ci>
+                <ci> SmtB </ci>
+                <ci> Zn </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_unin_S </ci>
+                <ci> SmtB_Zn </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r7" reversible="true">
+        <listOfReactants>
+          <speciesReference species="RNAP" stoichiometry="1" constant="true"/>
+          <speciesReference species="D_smtO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RD_smtO" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k_bind </ci>
+                <ci> RNAP </ci>
+                <ci> D_smtO </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k_unbind </ci>
+                <ci> RD_smtO </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r8" reversible="false">
+        <listOfReactants>
+          <speciesReference species="RD_smtO" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="InvR_S" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNAP" stoichiometry="1" constant="true"/>
+          <speciesReference species="D_smtO" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_m_smtO </ci>
+              <ci> RD_smtO </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r9" reversible="false">
+        <listOfReactants>
+          <speciesReference species="InvR_T" stoichiometry="1" constant="true"/>
+          <speciesReference species="InvR_S" stoichiometry="1" constant="true"/>
+          <speciesReference species="AND_Gate" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="InvR_D" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gated_TS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_SD_AND </ci>
+              <ci> InvR_T </ci>
+              <ci> InvR_S </ci>
+              <ci> AND_Gate </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r10" reversible="false">
+        <listOfReactants>
+          <speciesReference species="InvR_D" stoichiometry="1" constant="true"/>
+          <speciesReference species="RQ" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SD" stoichiometry="1" constant="true"/>
+          <speciesReference species="Q" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_SD </ci>
+              <ci> InvR_D </ci>
+              <ci> RQ </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
