@@ -3,4 +3,3 @@ temp_sbml_file.xml
 # Do not include the following folder, ignored during restructuring
 final_figures/
 figures/
-schematics/

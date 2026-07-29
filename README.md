@@ -1,12 +1,13 @@
 # Toehold-mediated strand exchange (TMSE) circuits 
 
-![TMSE-BioCRNpyler Library](./schematics/Figure_readme.png)
+![TMSE-BioCRNpyler Library](../schematics/Figure_readme.png)
 
 ## Description
 
-Toehold-mediated strand exchange circuits package is an open source package extension to [BioCRNpyler][BioCRNPyler]. It can be used to model toehold-mediated strand exchange circuits as we have demonstrated in [TMSE-paper][TMSE_doi]. 
+Toehold-mediated strand exchange circuits (TMSE)-BioCRNpyler library is an open source package library to [BioCRNpyler][BioCRNPyler]. 
+The library can be used to model toehold-mediated strand exchange circuits as we have demonstrated in [TMSE-paper][TMSE_doi]. 
 
-The new implemented components and mechanism included in this extension are listed below:
+The new implemented components and mechanisms included in this library are listed below:
 
 **Components**
 - `RNAassembly`: High-level representation of an RNA expression construct.
@@ -35,7 +36,7 @@ git clone https://github.com/usnistgov/TMSE_BioCRNpyler_Library
 ### Dependencies
 
 - [BioCRNpyler](https://github.com/BuildACell/bioCRNpyler)
-- [BioSCRAPE](https://github.com/biocircuits/bioscrape) 
+- [Bioscrape](https://github.com/biocircuits/bioscrape) 
 
 ## Related Material
 
@@ -45,31 +46,22 @@ Associated project pages on the NIST website:
 
 ## How to cite
 
-<!-- An article about the application of the extended classes is available in BioRxiv.  -->
-If this extension to BioCRNpyler helped you in your research, please cite:
-
-<!-- ```
-@article{tmse_biocrnpyler2026,
-  title={A modeling pipeline for toehold-mediated strand exchange circuits across synthetic biology applications},
-  author={Z. Jurado and G. Taghon and S. W. Schaffter},
-  journal = {BioRxiv},
-  year = {2026},
-  url = {<url>},
-}
-``` -->
+An article about the application of the extended classes is available in bioRxiv. 
+If this BioCRNpyler Library helped you in your research, please cite:
 
 ```
-@misc{tmse_biocrnpyler2026_repo,
-  title={toehold-mediated-strand-exchange},
-  author={Z. Jurado and G. Taghon and S. W. Schaffter},
-  howpublished = {GitHub},
+@article{tmse_biocrnpyler2026,
+  title={A modeling pipeline for toehold-mediated strand exchange circuits across synthetic biology applications},
+  author={Jurado, Zoila and Taghon, Geoffrey and Schaffter, Samuel W.},
+  journal = {bioRxiv},
   year = {2026},
-  month = {Mar},
+  doi = {10.64898/2026.07.22.739222},
+  url = {https://www.biorxiv.org/content/10.64898/2026.07.22.739222v1},
   note = {Available at: \url{https://github.com/usnistgov/TMSE_BioCRNpyler_Library}}
 }
-``` 
+```
 
-or the GitHub site: https://github.com/usnistgov/TMSE_BioCRNpyler_Library.
+or the GitHub site: https://github.com/usnistgov/TMSE_BioCRNpyler_Library. 
 
 An [article][BioCRNPyler_paper] about BioCRNpyler is available in PLOS Computational Biology. Please also site the orignal BioCRNpyler package:
 
@@ -107,5 +99,5 @@ See [LICENSE.md](LICENSE.md). This software was developed at the National Instit
 [cellenggroup]: [https://www.nist.gov/mml/bbd/cellular-engineering-group]
 [sws-nist]:{https://www.nist.gov/people/samuel-schaffter}
 [zj-nist]:{https://www.nist.gov/people/zoila-jurado}
-<!-- [TMSE_doi]: https://github.com/zjurado/toehold-mediated-strand-exchange/blob/main/examples/Figure2_Examples.ipynb -->
+[TMSE_doi]: https://www.biorxiv.org/content/10.64898/2026.07.22.739222v1
 <!-- [TMSEmodel-project]: -->
