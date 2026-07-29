@@ -1,6 +1,6 @@
 # Toehold-mediated strand exchange (TMSE) circuits 
 
-![TMSE-BioCRNpyler Library](../schematics/Figure_readme.png)
+![TMSE-BioCRNpyler Library](./schematics/Figure_readme.png)
 
 ## Description
 
