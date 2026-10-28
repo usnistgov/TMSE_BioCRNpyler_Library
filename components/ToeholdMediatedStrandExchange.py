@@ -178,7 +178,7 @@ class LeakctRSD(Component):
                     
                 else: 
                     idx_rna =rna_mols.index( 
-                                Species('THErr'+suffix, 
+                                Species('Gate'+suffix, 
                                         material_type= 'rna',
                                         compartment = compartment,
                                         attributes= ['pre']))     
@@ -667,12 +667,12 @@ class TMSE(Component):
             if 'Gate' in strand.name: # and 'u' not in strand.name:
                 if 'T' in strand.name:
                     tgate_strands.append(strand)
+                elif isinstance(strand.j, list):
+                    therr_strands.append(strand)
                 else:
                     gate_strands.append(strand)
             elif 'Fuel' in strand.name:
                 fuel_strands.append(strand)
-            elif 'THErr' in strand.name:
-                therr_strands.append(strand)
             elif 'Reporter' in strand.name:
                 reporter_strands.append(strand)
             elif 'Input' in strand.name or 'Output' in strand.name: # Explicit check instead of catch-all 'else'
