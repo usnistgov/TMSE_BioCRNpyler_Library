@@ -135,7 +135,7 @@ class LeakctRSD(Component):
     def __init__(
         self, 
         input_mol: Union[list],
-        outputs = None, #what would be the best way of implementing this? Need to define each, what if names are very different, how can we tell the computer? Dict might be better
+        outputs = None,
         compartment = None,
         attributes = None,
         **kwargs,
